@@ -43,8 +43,9 @@ return [
 
 ## Usage
 
-#### Creating a context file and appends it to the behat.yml configuration file
-This creates a Context file in the `features/bootstrap`
+#### Creating a context file
+This creates a Context file in the `features/bootstrap` and appends the relevant
+configuration data inside the behat.yml
 
 `php artisan lbd:make ExampleContext`
 
@@ -54,8 +55,14 @@ This creates a Context file in the `features/bootstrap`
 ```
 
 #### Running Behat
-This runs the Behat tests, you are able to use all arguments from the Behat CLI
+Run this command to run the Behat test runner, you are able to use all arguments from the Behat CLI
+
 `php artisan lbd`
+
+#### Traits
+**Refresh the database before each Scenario**
+`use RefreshScenario;`
+
 
 #### Example feature file and context file
 
