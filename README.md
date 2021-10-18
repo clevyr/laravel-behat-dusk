@@ -173,4 +173,4 @@ Please review [our security policy](../../security/policy) on how to report secu
 - [All Contributors](../../contributors)
 
 ## License
-Laravel Behat Dusk is [MIT Licensed](LICENSE.md)
+Laravel Behat Dusk is [GPL-3.0 License Licensed](LICENSE.md)
