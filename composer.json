@@ -1,0 +1,54 @@
+{
+    "name": "clevyr/laravel-behat-dusk",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Anthony Protano",
+            "email": "anthony@clevyr.com",
+            "role": "QA"
+        }
+    ],
+    "require": {
+        "php": "^8.0",
+        "behat/behat": "^3.8",
+        "illuminate/contracts": "^8.37",
+        "laravel/dusk": "v6.18",
+        "spatie/laravel-package-tools": "^1.9.2",
+        "symfony/yaml": "^5.3"
+    },
+    "require-dev": {
+        "nunomaduro/collision": "^5.3",
+        "orchestra/testbench": "^6.0",
+        "phpunit/phpunit": "^9.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Clevyr\\LaravelBehatDusk\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Clevyr\\LaravelBehatDusk\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/testbench package:test --colors=always",
+        "test-coverage": "vendor/bin/testbench package:test --coverage-html coverage",
+        "post-autoload-dump": [
+            "@php ./vendor/bin/testbench package:discover --ansi"
+        ]
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Clevyr\\LaravelBehatDusk\\LaravelBehatDuskServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}

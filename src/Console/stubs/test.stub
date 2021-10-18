@@ -1,0 +1,16 @@
+<?php
+
+use Clevyr\LaravelBehatDusk\BehatDuskTestCase;
+use Laravel\Dusk\Browser;
+use Clevyr\LaravelBehatDusk\Traits\RefreshScenario;
+
+class DummyClass extends BehatDuskTestCase
+{
+    /**
+     * Initializes context.
+     */
+    public function __construct()
+    {
+        parent::__construct();
+    }
+}
