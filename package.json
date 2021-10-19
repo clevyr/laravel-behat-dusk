@@ -1,0 +1,29 @@
+{
+  "name": "laravel-behat-dusk",
+  "version": "1.0.0",
+  "description": "![Packagist Version](https://img.shields.io/packagist/v/clevyr/laravel-behat-dusk) ![](https://github.com/clevyr/laravel-behat-dusk/workflows/Run%20Tests/badge.svg?branch=master) [![Total Downloads](https://img.shields.io/packagist/dt/clevyr/laravel-behat-dus.svg?style=flat-square)](https://packagist.org/packages/clevyr/laravel-behat-dusk)",
+  "main": "index.js",
+  "directories": {
+    "example": "examples",
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/clevyr/laravel-behat-dusk.git"
+  },
+  "author": "",
+  "license": "GPL-3.0-only",
+  "bugs": {
+    "url": "https://github.com/clevyr/laravel-behat-dusk/issues"
+  },
+  "homepage": "https://github.com/clevyr/laravel-behat-dusk#readme",
+  "lint-staged": {
+      "*.php": "php ./vendor/bin/php-cs-fixer fix --config .php_cs"
+  },
+    "devDependencies": {
+    "husky": "^7.0.2"
+  }
+}
