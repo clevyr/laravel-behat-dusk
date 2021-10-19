@@ -21,7 +21,7 @@
   },
   "homepage": "https://github.com/clevyr/laravel-behat-dusk#readme",
   "lint-staged": {
-      "*.php": "php ./vendor/bin/php-cs-fixer fix --config .php_cs"
+      "*.php": "php ./vendor/bin/php-cs-fixer fix --config .php-cs-fixer.php"
   },
     "devDependencies": {
     "husky": "^7.0.2"
