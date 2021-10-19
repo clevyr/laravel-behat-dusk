@@ -1,6 +1,5 @@
-![Packagist Version](https://img.shields.io/packagist/v/clevyr/laravel-behat-dusk)
+![GitHub release (latest SemVer including pre-releases)](https://img.shields.io/github/v/release/clevyr/laravel-behat-dusk?include_prereleases)
 ![](https://github.com/clevyr/laravel-behat-dusk/workflows/Run%20Tests/badge.svg?branch=master)
-[![Total Downloads](https://img.shields.io/packagist/dt/clevyr/laravel-behat-dus.svg?style=flat-square)](https://packagist.org/packages/clevyr/laravel-behat-dusk)
 
 Laravel Behat Dusk is a simple package that integrates
 Behat with Laravel and Laravel Dusk with the goal of writing BDD tests
@@ -38,6 +37,12 @@ return [
     // Base url when running Laravel Dusk
     'dusk_base_url' => env('DUSK_BASE_URL') ?? 'http://localhost'
 ];
+```
+
+Environment Variables
+
+```dotenv
+DUSK_BASE_URL=http://laravel.test
 ```
 
 ## Usage
