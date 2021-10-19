@@ -1,7 +1,6 @@
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/clevyr/laravel-behat.svg?style=flat-square)](https://packagist.org/packages/clevyr/laravel-behat)
-[![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/clevyr/laravel-behat/run-tests?label=tests)](https://github.com/clevyr/laravel-behat/actions?query=workflow%3Arun-tests+branch%3Amain)
-[![GitHub Code Style Action Status](https://img.shields.io/github/workflow/status/clevyr/laravel-behat/Check%20&%20fix%20styling?label=code%20style)](https://github.com/clevyr/laravel-behat/actions?query=workflow%3A"Check+%26+fix+styling"+branch%3Amain)
-[![Total Downloads](https://img.shields.io/packagist/dt/clevyr/laravel-behat.svg?style=flat-square)](https://packagist.org/packages/clevyr/laravel-behat)
+![Packagist Version](https://img.shields.io/packagist/v/clevyr/laravel-behat-dusk)
+![](https://github.com/clevyr/laravel-behat-dusk/workflows/Run%20Tests/badge.svg?branch=master)
+[![Total Downloads](https://img.shields.io/packagist/dt/clevyr/laravel-behat-dus.svg?style=flat-square)](https://packagist.org/packages/clevyr/laravel-behat-dusk)
 
 Laravel Behat Dusk is a simple package that integrates
 Behat with Laravel and Laravel Dusk with the goal of writing BDD tests
