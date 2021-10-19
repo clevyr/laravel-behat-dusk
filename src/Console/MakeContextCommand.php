@@ -40,19 +40,6 @@ class MakeContextCommand extends GeneratorCommand
     protected $suite = 'default';
 
     /**
-     * @var string[]
-     */
-    protected $file_default = [
-        'default' => [
-            'suites' => [
-                'default' => [
-                    'contexts' => ['FeatureContext'],
-                ],
-            ],
-        ],
-    ];
-
-    /**
      * @return bool|void|null
      * @throws FileNotFoundException
      * @throws Exception

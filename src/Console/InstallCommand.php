@@ -4,6 +4,7 @@ namespace Clevyr\LaravelBehatDusk\Console;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\File;
+use Symfony\Component\Yaml\Yaml;
 
 class InstallCommand extends Command
 {
@@ -12,6 +13,8 @@ class InstallCommand extends Command
      */
     protected $signature = 'lbd:install';
 
+    private $behat_config_path;
+
     /**
      * @var string
      */
@@ -19,10 +22,12 @@ class InstallCommand extends Command
 
     public function handle()
     {
+        $this->behat_config_path = base_path('behat.yml');
+
         $this->info('Installing Laravel Behat Dusk Package...');
         $this->installConfig();
 
-        if (! File::exists(base_path('behat.yml'))) {
+        if (! File::exists($this->behat_config_path)) {
             $this->info('Initializing Behat...');
             $this->installBehat();
         } else {
@@ -39,6 +44,10 @@ class InstallCommand extends Command
     {
         $features_path = base_path('features');
         $bootstrap_path = base_path('features/bootstrap');
+
+        if (! File::exists($this->behat_config_path)) {
+            File::put($this->behat_config_path, Yaml::dump(Helpers::defaultBehatConfig(), 8, 2));
+        }
 
         if (! File::exists($features_path)) {
             File::makeDirectory($bootstrap_path, 0755, true);
