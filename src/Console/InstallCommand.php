@@ -8,12 +8,12 @@ use Illuminate\Support\Facades\File;
 class InstallCommand extends Command
 {
     /**
-     * @var string $signature
+     * @var string
      */
     protected $signature = 'lbd:install';
 
     /**
-     * @var string $description
+     * @var string
      */
     protected $description = 'Install the Laravel Behat Dusk package';
 
@@ -22,7 +22,7 @@ class InstallCommand extends Command
         $this->info('Installing Laravel Behat Dusk Package...');
         $this->installConfig();
 
-        if (!File::exists(base_path('behat.yml'))) {
+        if (! File::exists(base_path('behat.yml'))) {
             $this->info('Initializing Behat...');
             $this->installBehat();
         } else {
@@ -35,16 +35,16 @@ class InstallCommand extends Command
      *
      * @return void
      */
-    private function installBehat() : void
+    private function installBehat(): void
     {
         $features_path = base_path('features');
         $bootstrap_path = base_path('features/bootstrap');
 
-        if (!File::exists($features_path)) {
+        if (! File::exists($features_path)) {
             File::makeDirectory($bootstrap_path, 0755, true);
         }
 
-        if (!File::exists(base_path('features/bootstrap/FeatureContext'))) {
+        if (! File::exists(base_path('features/bootstrap/FeatureContext'))) {
             $this->call(MakeContextCommand::class, ['name' => 'FeatureContext']);
         }
     }
@@ -54,10 +54,9 @@ class InstallCommand extends Command
      *
      * @return void
      */
-    private function installConfig() : void
+    private function installConfig(): void
     {
-
-        if (!$this->configExists()) {
+        if (! $this->configExists()) {
             $this->publishConfiguration();
             $this->info('Configuration published');
         }
@@ -68,7 +67,7 @@ class InstallCommand extends Command
      *
      * @return bool
      */
-    private function configExists() : bool
+    private function configExists(): bool
     {
         return File::exists(config_path('behat-dusk.php'));
     }
@@ -78,11 +77,11 @@ class InstallCommand extends Command
      *
      * @return void
      */
-    private function publishConfiguration() : void
+    private function publishConfiguration(): void
     {
         $params = [
             '--provider' => 'Clevyr\LaravelBehatDusk\LaravelBehatDuskServiceProvider',
-            '--tag' => 'behat-dusk-config'
+            '--tag' => 'behat-dusk-config',
         ];
 
         $this->call('vendor:publish', $params);

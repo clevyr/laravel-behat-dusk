@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\File;
 class InstallCommandTest extends TestCase
 {
     /**
-     * @var string $config_path
+     * @var string
      */
     public string $config_path;
 
@@ -51,7 +51,7 @@ class InstallCommandTest extends TestCase
      *
      * @return bool
      */
-    private function configExists() : bool
+    private function configExists(): bool
     {
         return File::exists($this->config_path);
     }

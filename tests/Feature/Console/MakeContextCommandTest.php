@@ -11,12 +11,12 @@ use Symfony\Component\Yaml\Yaml;
 class MakeContextCommandTest extends TestCase
 {
     /**
-     * @var string $behat_config_path
+     * @var string
      */
     private string $behat_config_path;
 
     /**
-     * @var string $test_context_path
+     * @var string
      */
     private string $test_context_path;
 
@@ -40,7 +40,7 @@ class MakeContextCommandTest extends TestCase
         $this->assertFalse(File::exists($this->test_context_path));
 
         Artisan::call(MakeContextCommand::class, [
-            'name' => 'TestContext'
+            'name' => 'TestContext',
         ]);
 
         $this->assertTrue(File::exists($this->test_context_path));
@@ -81,11 +81,11 @@ class MakeContextCommandTest extends TestCase
     public function it_does_not_create_duplicate_context_entry()
     {
         Artisan::call(MakeContextCommand::class, [
-            'name' => 'TestContext'
+            'name' => 'TestContext',
         ]);
 
         Artisan::call(MakeContextCommand::class, [
-            'name' => 'TestContext'
+            'name' => 'TestContext',
         ]);
 
         $parsed_config = Yaml::parseFile($this->behat_config_path);
@@ -96,7 +96,7 @@ class MakeContextCommandTest extends TestCase
     }
 
     /**
-     * Tests profile is injected inot the behat yaml file
+     * Tests profile is injected in to the behat yaml file
      *
      * @test
      */
@@ -104,7 +104,7 @@ class MakeContextCommandTest extends TestCase
     {
         Artisan::call(MakeContextCommand::class, [
             'name' => 'TestContext',
-            '--profile' => 'test'
+            '--profile' => 'test',
         ]);
 
         $parsed_config = Yaml::parseFile($this->behat_config_path);
@@ -122,7 +122,7 @@ class MakeContextCommandTest extends TestCase
     {
         Artisan::call(MakeContextCommand::class, [
             'name' => 'TestContext',
-            '--suite' => 'test'
+            '--suite' => 'test',
         ]);
 
         $parsed_config = Yaml::parseFile($this->behat_config_path);
@@ -134,7 +134,7 @@ class MakeContextCommandTest extends TestCase
      * Resets the file structure
      * @return void
      */
-    private function cleanEnvironment() : void
+    private function cleanEnvironment(): void
     {
         if (File::exists($this->test_context_path)) {
             unlink($this->test_context_path);
@@ -144,10 +144,10 @@ class MakeContextCommandTest extends TestCase
             'default' => [
                 'suites' => [
                     'default' => [
-                        'contexts' => []
-                    ]
-                ]
-            ]
+                        'contexts' => [],
+                    ],
+                ],
+            ],
         ], 8, 2));
     }
 }

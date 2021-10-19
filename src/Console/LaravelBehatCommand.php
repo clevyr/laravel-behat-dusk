@@ -16,14 +16,14 @@ class LaravelBehatCommand extends Command
     protected $signature = 'lbd';
 
     /**
-     * @var string[] $binary
+     * @var string[]
      */
     protected $binary = ['vendor/behat/behat/bin/behat'];
 
     /**
      * Console command description
      *
-     * @var string $description
+     * @var string
      */
     protected $description = 'Runs the Behat tests for the application';
 
@@ -40,7 +40,7 @@ class LaravelBehatCommand extends Command
     /**
      * @return void
      */
-    public function handle() : void
+    public function handle(): void
     {
         $options = collect($_SERVER['argv'])
             ->slice(2)

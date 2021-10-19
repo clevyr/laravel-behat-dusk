@@ -35,21 +35,21 @@ class MakeContextCommand extends GeneratorCommand
     protected $type = 'Behat Context';
 
     /**
-     * @var string $suite
+     * @var string
      */
     protected $suite = 'default';
 
     /**
-     * @var string[] $file_default
+     * @var string[]
      */
     protected $file_default = [
         'default' => [
             'suites' => [
                 'default' => [
-                    'contexts' => ['FeatureContext']
-                ]
-            ]
-        ]
+                    'contexts' => ['FeatureContext'],
+                ],
+            ],
+        ],
     ];
 
     /**
@@ -72,19 +72,19 @@ class MakeContextCommand extends GeneratorCommand
      * Appends
      * @throws Exception
      */
-    private function appendToBehatConfig() : void
+    private function appendToBehatConfig(): void
     {
         $context_file_name = $this->getNameInput();
 
         $behat_config = base_path('behat.yml');
 
-        if (!file_exists($behat_config)) {
+        if (! file_exists($behat_config)) {
             throw new Exception('Please run the install command before creating a Context File');
         }
 
         $config = Yaml::parseFile($behat_config);
 
-        if (!$this->contextExists($config, $context_file_name)) {
+        if (! $this->contextExists($config, $context_file_name)) {
             $this->setContextToBehatConfig($config, $context_file_name, $behat_config);
         }
     }
@@ -96,7 +96,7 @@ class MakeContextCommand extends GeneratorCommand
      * @param string $context_file_name
      * @param string $path
      */
-    private function setContextToBehatConfig(array $config, string $context_file_name, string $path) : void
+    private function setContextToBehatConfig(array $config, string $context_file_name, string $path): void
     {
         $profile = $this->option('profile');
         $suite = $this->option('suite');
@@ -113,7 +113,7 @@ class MakeContextCommand extends GeneratorCommand
      * @param string $context_file_name
      * @return bool
      */
-    private function contextExists(array $config, string $context_file_name) : bool
+    private function contextExists(array $config, string $context_file_name): bool
     {
         return in_array($context_file_name, $config['default']['suites']['default']['contexts']);
     }
