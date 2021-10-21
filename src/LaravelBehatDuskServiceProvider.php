@@ -3,7 +3,7 @@
 namespace Clevyr\LaravelBehatDusk;
 
 use Clevyr\LaravelBehatDusk\Console\InstallCommand;
-use Clevyr\LaravelBehatDusk\Console\LaravelBehatCommand;
+use Clevyr\LaravelBehatDusk\Console\LaravelBehatDuskCommand;
 use Clevyr\LaravelBehatDusk\Console\MakeContextCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
@@ -14,9 +14,8 @@ class LaravelBehatDuskServiceProvider extends PackageServiceProvider
     {
         $package
             ->name('laravel-behat-dusk')
-            ->hasConfigFile()
             ->hasCommands([
-                LaravelBehatCommand::class,
+                LaravelBehatDuskCommand::class,
                 MakeContextCommand::class,
                 InstallCommand::class,
             ]);

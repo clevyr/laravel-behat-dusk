@@ -1,8 +1,8 @@
 <?php
 
 use Behat\Gherkin\Node\TableNode;
-use Clevyr\LaravelBehat\BehatDuskTestCase;
-use Clevyr\LaravelBehat\Traits\RefreshScenario;
+use Clevyr\LaravelBehatDusk\BehatDuskTestCase;
+use Clevyr\LaravelBehatDusk\Traits\RefreshScenario;
 use Laravel\Dusk\Browser;
 
 /**
@@ -13,7 +13,7 @@ class FeatureContext extends BehatDuskTestCase
     use RefreshScenario;
 
     /**
-     * @var array $user
+     * @var array
      */
     public array $user;
 

@@ -3,6 +3,7 @@
 namespace Clevyr\LaravelBehatDusk\Tests;
 
 use Clevyr\LaravelBehatDusk\LaravelBehatDuskServiceProvider;
+use Laravel\Dusk\DuskServiceProvider;
 
 class TestCase extends \Orchestra\Testbench\TestCase
 {
@@ -15,6 +16,7 @@ class TestCase extends \Orchestra\Testbench\TestCase
     {
         return [
             LaravelBehatDuskServiceProvider::class,
+            DuskServiceProvider::class,
         ];
     }
 }

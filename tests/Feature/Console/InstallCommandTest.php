@@ -10,30 +10,57 @@ use Illuminate\Support\Facades\File;
 class InstallCommandTest extends TestCase
 {
     /**
-     * @var string
+     * @var array
      */
-    public string $config_path;
+    private array $files;
+
+    /**
+     * @var array
+     */
+    private array $folders;
 
     protected function setUp(): void
     {
         parent::setUp();
 
-        $this->config_path = config_path('behat-dusk.php');
+        $this->files = [
+            base_path('behat.yml'),
+            base_path('tests/DuskTestCase.php'),
+            base_path('features/bootstrap/FeatureContext.php'),
+        ];
+
+        $this->folders = [
+            base_path('features'),
+            base_path('tests/Browser'),
+        ];
 
         $this->deleteFiles();
     }
 
     /**
-     * Tests that the configuration file is published
-     * @test test_config_is_published
+     * Tests that the files are published
+     *
+     * @test
      */
-    public function config_is_published()
+    public function files_are_created()
     {
-        $this->assertFalse($this->configExists());
+        foreach ($this->files as $file) {
+            $this->assertFileDoesNotExist($file);
+        }
+
+        foreach ($this->folders as $folder) {
+            $this->assertDirectoryDoesNotExist($folder);
+        }
 
         Artisan::call(InstallCommand::class);
 
-        $this->assertTrue($this->configExists());
+        foreach ($this->files as $file) {
+            $this->assertFileExists($file);
+        }
+
+        foreach ($this->folders as $folder) {
+            $this->assertDirectoryExists($folder);
+        }
     }
 
     /**
@@ -41,18 +68,10 @@ class InstallCommandTest extends TestCase
      */
     private function deleteFiles()
     {
-        if ($this->configExists()) {
-            unlink($this->config_path);
-        }
-    }
+        File::delete($this->files);
 
-    /**
-     * Checks if the config file exists
-     *
-     * @return bool
-     */
-    private function configExists(): bool
-    {
-        return File::exists($this->config_path);
+        foreach ($this->folders as $folder) {
+            File::deleteDirectory($folder);
+        }
     }
 }

@@ -7,7 +7,7 @@ Feature: User Login
     Scenario: Logging in as a User
         Given There are users
             | email            | password |
-            | admin@clevyr.com | password |
+            | user@example.com | password |
         When I am on the "/login" page
         When I fill in email
         When I fill in password

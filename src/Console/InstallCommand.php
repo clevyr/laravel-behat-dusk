@@ -25,13 +25,28 @@ class InstallCommand extends Command
         $this->behat_config_path = base_path('behat.yml');
 
         $this->info('Installing Laravel Behat Dusk Package...');
-        $this->installConfig();
+        //$this->installConfig(); Note this is currently un-used as there is no configuration to publish at this time
 
         if (! File::exists($this->behat_config_path)) {
-            $this->info('Initializing Behat...');
+            $this->info('Installing Behat...');
             $this->installBehat();
+            $this->info('Installing Laravel Dusk...');
+            $this->installLaravelDusk();
         } else {
             $this->info('Skipping Behat Initialization as it is already installed');
+        }
+    }
+
+    /**
+     * Copies the config file
+     *
+     * @return void
+     */
+    private function installConfig(): void
+    {
+        if (! $this->configExists()) {
+            $this->publishConfiguration();
+            $this->info('Configuration published');
         }
     }
 
@@ -59,16 +74,11 @@ class InstallCommand extends Command
     }
 
     /**
-     * Copies the config file
-     *
-     * @return void
+     * Installs Laravel Dusk
      */
-    private function installConfig(): void
+    private function installLaravelDusk(): void
     {
-        if (! $this->configExists()) {
-            $this->publishConfiguration();
-            $this->info('Configuration published');
-        }
+        $this->call(\Laravel\Dusk\Console\InstallCommand::class);
     }
 
     /**
