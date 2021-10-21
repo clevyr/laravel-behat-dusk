@@ -1,9 +1,12 @@
 ![GitHub release (latest SemVer including pre-releases)](https://img.shields.io/github/v/release/clevyr/laravel-behat-dusk?include_prereleases)
 ![](https://github.com/clevyr/laravel-behat-dusk/workflows/Run%20Tests/badge.svg?branch=master)
 
-Laravel Behat Dusk is a simple package that integrates
-Behat with Laravel and Laravel Dusk with the goal of writing BDD tests
-as painless as possible.
+Laravel Behat Dusk is a simple package with the goal of integrating
+Behat with Laravel and Laravel Dusk.
+
+**This is not a 1:1 implementation of Behat with Laravel,
+the current goal is to enable a simple and quick way to write Behavior Driven Tests
+in Laravel Applications.**
 
 ---
 
@@ -24,26 +27,29 @@ php artisan lbd:install
 ```
 
 The following files will be outputted
-- config
-    - behat-dusk.php
 - features
     - bootstrap
         - FeatureContext
 - behat.yml
 
-Configuration File
-```php
-return [
-    // Base url when running Laravel Dusk
-    'dusk_base_url' => env('DUSK_BASE_URL') ?? 'http://localhost'
-];
-```
+#### Testing Environments
+Laravel Behat Dusk's environment setup works the exact same way as Laravel Dusk.
+Take a look at their documentation for environment handling. [https://laravel.com/docs/8.x/dusk#environment-handling]()
 
-Environment Variables
+#### Running in Docker
+
+- Create a .env.dusk.local file by running `cp .env .env.dusk.local` and add it to your .gitignore file
+- Update the following `.env.dusk.local` environment file with the following
 
 ```dotenv
-DUSK_BASE_URL=http://laravel.test
+APP_URL=http://laravel.test
+DUSK_DRIVER_URL=http://selenium:4444/wd/hub
 ```
+
+If you are not using Laravel Sail use the docker-compose container
+names for your Application and Selenium Containers.
+
+- Run Laravel Behat Dusk in the app container `sail artisan lbd`
 
 ## Usage
 
@@ -94,8 +100,8 @@ FeatureContext.php
 <?php
 
 use Behat\Gherkin\Node\TableNode;
-use Clevyr\LaravelBehat\BehatDuskTestCase;
-use Clevyr\LaravelBehat\Traits\RefreshScenario;
+use Clevyr\LaravelBehatDusk\BehatDuskTestCase;
+use Clevyr\LaravelBehatDusk\Traits\RefreshScenario;
 use Laravel\Dusk\Browser;
 
 /**
