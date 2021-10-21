@@ -24,7 +24,6 @@ class InstallCommandTest extends TestCase
         parent::setUp();
 
         $this->files = [
-            config_path('behat-dusk.php'),
             base_path('behat.yml'),
             base_path('tests/DuskTestCase.php'),
             base_path('features/bootstrap/FeatureContext.php'),
